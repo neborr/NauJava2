@@ -19,6 +19,7 @@ public class task1 {
             }
         }
 
+        
         System.out.println("Максимальное по модулю число: " + maxVal);
     }
 }
