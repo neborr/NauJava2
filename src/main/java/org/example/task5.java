@@ -1,5 +1,4 @@
 package org.example;
-
 public class task5 implements task5Time {
     private int seconds;
     private volatile boolean isRunning;
