@@ -1,5 +1,5 @@
 package org.example;
-public interface task5Time {
+public interface Task5Time {
     void start();
     void stop();
 }
