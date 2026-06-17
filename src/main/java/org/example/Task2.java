@@ -1,21 +1,28 @@
 package org.example;
+
 import java.util.ArrayList;
 import java.util.Random;
 
-public class task2 {
-    public static void task2() {
+public class Task2 {
+    public static void task2(int n) {
+        if (n < 0) {
+            System.out.println("Размер массива не может быть отрицательным.");
+            return;
+        }
+
         ArrayList<Double> list = new ArrayList<>();
         Random random = new Random();
+        for (int i = 0; i < n; i++) {
+            list.add(-100.0 + (200.0 * random.nextDouble()));
+        }
 
-        for (int i = 0; i < 10; i++) list.add(-100.0 + (200.0 * random.nextDouble()));
-
-        System.out.println("До сортировки: " + list);
+        System.out.println("Исходный список (n=" + n + "): " + list);
         ArrayList<Double> sortedList = mergeSort(list);
-        System.out.println("После сортировки: " + sortedList);
+        System.out.println("Отсортированный список: " + sortedList);
     }
 
     public static ArrayList<Double> mergeSort(ArrayList<Double> list) {
-        if (list.size() <= 1)  return list;
+        if (list.size() <= 1) return list;
 
         int mid = list.size() / 2;
         ArrayList<Double> left = new ArrayList<>(list.subList(0, mid));
@@ -30,22 +37,14 @@ public class task2 {
 
         while (leftIndex < left.size() && rightIndex < right.size()) {
             if (left.get(leftIndex) < right.get(rightIndex)) {
-                result.add(left.get(leftIndex));
-                leftIndex++;
+                result.add(left.get(leftIndex++));
             } else {
-                result.add(right.get(rightIndex));
-                rightIndex++;
+                result.add(right.get(rightIndex++));
             }
         }
 
-        while (leftIndex < left.size()) {
-            result.add(left.get(leftIndex));
-            leftIndex++;
-        }
-        while (rightIndex < right.size()) {
-            result.add(right.get(rightIndex));
-            rightIndex++;
-        }
+        result.addAll(left.subList(leftIndex, left.size()));
+        result.addAll(right.subList(rightIndex, right.size()));
 
         return result;
     }

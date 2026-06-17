@@ -1,13 +1,19 @@
 package org.example;
-
 import java.util.Arrays;
+import java.util.concurrent.ThreadLocalRandom;
 
-public class task1 {
-    public static void task1() {
-        int[] randomNumbers = new int[10];
+public class Task1 {
+
+    public static void task1(int number) {
+        if (number <= 0) {
+            System.out.println("Ошибка: размер массива должен быть больше 0");
+            return;
+        }
+
+        int[] randomNumbers = new int[number];
 
         for(int i = 0; i < randomNumbers.length; ++i) {
-            randomNumbers[i] = (int)((double)513.0F * Math.random()) + -256;
+            randomNumbers[i] = ThreadLocalRandom.current().nextInt(-255, 256);
         }
 
         System.out.println("Массив: " + Arrays.toString(randomNumbers));
@@ -19,7 +25,7 @@ public class task1 {
             }
         }
 
-        
+
         System.out.println("Максимальное по модулю число: " + maxVal);
     }
 }
